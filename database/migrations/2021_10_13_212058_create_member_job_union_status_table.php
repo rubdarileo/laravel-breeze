@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMemberjobUnionStatusTable extends Migration
+class CreateMemberJobUnionStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMemberjobUnionStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('memberjob_union_status', function (Blueprint $table) {
+        Schema::create('member_job_union_status', function (Blueprint $table) {
             $table->id();
             $table->date('change_date')->nullable();
             $table->boolean('active')->nullable();
@@ -21,8 +21,8 @@ class CreateMemberjobUnionStatusTable extends Migration
             $table->integer('last_union_membership_status_id')->nullable();
             $table->foreignId('union_membership_status_id');
             $table->foreign('union_membership_status_id')->references('id')->on('union_membership_status');
-            $table->foreignId('memberjob_id');
-            $table->foreign('memberjob_id')->references('id')->on('memberjobs');
+            $table->foreignId('member_job_id');
+            $table->foreign('member_job_id')->references('id')->on('member_jobs');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateMemberjobUnionStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memberjob_union_status');
+        Schema::dropIfExists('member_job_union_status');
     }
 }

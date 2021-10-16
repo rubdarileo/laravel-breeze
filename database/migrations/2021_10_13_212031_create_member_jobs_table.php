@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMemberjobsTable extends Migration
+class CreateMemberJobsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMemberjobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('memberjobs', function (Blueprint $table) {
+        Schema::create('member_jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('position_id')->nullable();
             $table->foreign('position_id')->references('id')->on('positions');
@@ -48,6 +48,6 @@ class CreateMemberjobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memberjobs');
+        Schema::dropIfExists('member_jobs');
     }
 }

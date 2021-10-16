@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMemberjobCertificatesTable extends Migration
+class CreateMemberJobCertificatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateMemberjobCertificatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('memberjob_certificates', function (Blueprint $table) {
+        Schema::create('member_job_certificates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('certificate_id');
             $table->foreign('certificate_id')->references('id')->on('certificates');
-            $table->foreignId('memberjob_id');
-            $table->foreign('memberjob_id')->references('id')->on('memberjobs');
+            $table->foreignId('member_job_id');
+            $table->foreign('member_job_id')->references('id')->on('member_jobs');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateMemberjobCertificatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memberjob_certificates');
+        Schema::dropIfExists('member_job_certificates');
     }
 }
