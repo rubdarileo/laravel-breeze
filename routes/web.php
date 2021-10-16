@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/members', [MemberController::class, 'index'])->middleware(['auth', 'verified'])->name('members');
+Route::get('/members/management', [MemberController::class, 'show'])->middleware(['auth', 'verified'])->name('members.management');
+Route::get('/members/add', [MemberController::class, 'index'])->middleware(['auth', 'verified'])->name('members.add');
 
 require __DIR__.'/auth.php';

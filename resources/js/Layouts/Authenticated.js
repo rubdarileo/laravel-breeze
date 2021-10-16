@@ -47,11 +47,20 @@ export default function Authenticated({ auth, header, children }) {
                                         </Dropdown.Trigger>
 
                                         <Dropdown.Content>
-                                            <Dropdown.Link href={route('members')} method="get" as="button">
-                                                Member management
+                                            <Dropdown.Link href={route('members.management')} method="get" as="button">
+                                                Member Management
                                             </Dropdown.Link>
-                                            <Dropdown.Link href={route('logout')} method="get" as="button">
-                                                Member Bulk
+                                            <Dropdown.Link href={route('members.add')} method="get" as="button">
+                                                Add Member
+                                            </Dropdown.Link>
+                                            <Dropdown.Link href={route('members.management')} method="get" as="button">
+                                                Bulk Address Update
+                                            </Dropdown.Link>
+                                            <Dropdown.Link href={route('members.management')} method="get" as="button">
+                                                Bulk Member Add
+                                            </Dropdown.Link>
+                                            <Dropdown.Link href={route('members.management')} method="get" as="button">
+                                                Bulk Member Update
                                             </Dropdown.Link>
                                         </Dropdown.Content>
                                     </Dropdown>

@@ -7,33 +7,36 @@ import SelectInput from '@/Shared/SelectInput';
 import DateInput from '@/Shared/DateInput';
 import React, { useState } from 'react'
 
-export default function MemberManagement(props) {
+export default function MemberAdd(props) {
   const { errors } = usePage().props
   const [openTab, setOpenTab] = React.useState(1);
 
   const [values, setValues] = useState({
     title: "",
     last_name: "",
-    union_status: "",
-    join_date: "",
-    first_name: "",
-    sick_plan: "",
-    retire_date: "",
-    suffix: "",
-    iaff_benefits: "",
-    uniaff_dues: "",
-    address_1: "",
     status: "",
-    last_worked: "",
+    first_name: "",
+    middle: "",
+    suffix: "",
+    birth_date: "",
+    join_date: "",
+    address_1: "",
+    gender: "",
+    ethnicity: "",
     address_2: "",
-    start_date: "",
-    end_date: "",
+    original_hire: "",
+    badge: "",
     zip_code: "",
     state: "",
+    position: "",
+    city: "",
+    sick_plan: "",
     social_security: "",
     employee_number: "",
-    city: "",
     iaff_member: "",
+    home_phone: "",
+    cell_phone: "",
+    email: "",
   })
 
   function handleDateChange(field, value) {
@@ -59,97 +62,16 @@ export default function MemberManagement(props) {
       <Authenticated
           auth={props.auth}
           errors={props.errors}
-          header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Member Management</h2>}
+          header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Member Add</h2>}
       >
-        <Head title="Member Management" />
+        <Head title="Member Add" />
         <div className="container mx-auto">
           <div className="flex flex-wrap">
             <div className="w-full">
-            <ul
-              className="flex mb-0 list-none flex-wrap pt-3 flex-row"
-              role="tablist"
-            >
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <a
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 1
-                      ? "text-white bg-gray-600"
-                      : "text-black-600 bg-white")
-                  }
-                  onClick={e => {
-                    e.preventDefault();
-                    setOpenTab(1);
-                  }}
-                  data-toggle="tab"
-                  href="#link1"
-                  role="tablist"
-                >
-                  <i className="fas fa-space-shuttle text-base mr-1"></i> Member
-                </a>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <a
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 2
-                      ? "text-white bg-gray-600"
-                      : "text-black-600 bg-white")
-                  }
-                  onClick={e => {
-                    e.preventDefault();
-                    setOpenTab(2);
-                  }}
-                  data-toggle="tab"
-                  href="#link2"
-                  role="tablist"
-                >
-                  <i className="fas fa-cog text-base mr-1"></i>  Personal
-                </a>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <a
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 3
-                      ? "text-white bg-gray-600"
-                      : "text-black-600 bg-white")
-                  }
-                  onClick={e => {
-                    e.preventDefault();
-                    setOpenTab(3);
-                  }}
-                  data-toggle="tab"
-                  href="#link3"
-                  role="tablist"
-                >
-                  <i className="fas fa-briefcase text-base mr-1"></i>  Job Info
-                </a>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <a
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 3
-                      ? "text-white bg-gray-600"
-                      : "text-black-600 bg-white")
-                  }
-                  onClick={e => {
-                    e.preventDefault();
-                    setOpenTab(4);
-                  }}
-                  data-toggle="tab"
-                  href="#link4"
-                  role="tablist"
-                >
-                  <i className="fas fa-briefcase text-base mr-1"></i>  Web
-                </a>
-              </li>
-            </ul>
             <div className="bg-gray-200 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="px-4 py-5 flex-auto">
                 <div className="tab-content tab-space">
-                  <div className={openTab === 1 ? "block" : "hidden"} id="link1">
+                  <div className="block">
                     <form onSubmit={handleSubmit}>
                       <div className="grid grid-cols-2 gap-8">
                         <div className="grid grid-cols-2 gap-4">
@@ -194,14 +116,7 @@ export default function MemberManagement(props) {
                             </SelectInput>
                           </div>
                           <div className="mb-3 pt-0">
-                            <DateInput
-                              className="w-full"
-                              label="Join Date"
-                              name="join_date"
-                              selected={values.join_date}
-                              errors={errors.join_date}
-                              onChange={(date) => handleDateChange("join_date", date)}
-                            />
+                            
                           </div>
                         </div>
                       </div>
@@ -229,30 +144,7 @@ export default function MemberManagement(props) {
                           </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                          <div className="mb-3 pt-0">
-                            <SelectInput
-                              className="w-full"
-                              label="Sick Plan:"
-                              name="sick_plan"
-                              errors={errors.sick_plan}
-                              value={values.sick_plan}
-                              onChange={handleChange}
-                            >
-                              <option value=""></option>
-                              <option value="CA">Canada</option>
-                              <option value="US">United States</option>
-                            </SelectInput>
-                          </div>
-                          <div className="mb-3 pt-0">
-                            <DateInput
-                              className="w-full"
-                              label="Retire Date:"
-                              name="retire_date"
-                              selected={values.retire_date}
-                              errors={errors.retire_date}
-                              onChange={(date) => handleDateChange("retire_date", date)}
-                            />
-                          </div>
+                          <label>Demographics</label>
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-8">
@@ -270,14 +162,24 @@ export default function MemberManagement(props) {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="mb-3 pt-0">
-                            <label htmlFor="iaff_benefits">IAFF Benefits:</label>
-                            <input className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" id="iaff_benefits" value={values.iaff_benefits} onChange={handleChange} />
-                            {errors.iaff_benefits && <div>{errors.iaff_benefits}</div>}
+                            <DateInput
+                              className="w-full"
+                              label="Birth Date:"
+                              name="birth_date"
+                              selected={values.birth_date}
+                              errors={errors.birth_date}
+                              onChange={(date) => handleDateChange("birth_date", date)}
+                            />
                           </div>
                           <div className="mb-3 pt-0">
-                            <label htmlFor="uniaff_dues">Uniaff Dues:</label>
-                            <input className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full" id="uniaff_dues" value={values.uniaff_dues} onChange={handleChange} />
-                            {errors.uniaff_dues && <div>{errors.uniaff_dues}</div>}
+                            <DateInput
+                              className="w-full"
+                              label="Join Date:"
+                              name="join_date"
+                              selected={values.join_date}
+                              errors={errors.join_date}
+                              onChange={(date) => handleDateChange("join_date", date)}
+                            />
                           </div>
                         </div>
                       </div>
@@ -298,10 +200,10 @@ export default function MemberManagement(props) {
                           <div className="mb-3 pt-0">
                             <SelectInput
                               className="w-full"
-                              label="Status:"
-                              name="status"
-                              errors={errors.status}
-                              value={values.status}
+                              label="Gender:"
+                              name="gender"
+                              errors={errors.gender}
+                              value={values.gender}
                               onChange={handleChange}
                             >
                               <option value=""></option>
@@ -310,14 +212,18 @@ export default function MemberManagement(props) {
                             </SelectInput>
                           </div>
                           <div className="mb-3 pt-0">
-                            <DateInput
+                            <SelectInput
                               className="w-full"
-                              label="Last Worked:"
-                              name="last_worked"
-                              selected={values.last_worked}
-                              errors={errors.last_worked}
-                              onChange={(date) => handleDateChange("last_worked", date)}
-                            />
+                              label="Ethnicity:"
+                              name="race"
+                              errors={errors.race}
+                              value={values.race}
+                              onChange={handleChange}
+                            >
+                              <option value=""></option>
+                              <option value="CA">Canada</option>
+                              <option value="US">United States</option>
+                            </SelectInput>
                           </div>
                         </div>
                       </div>
@@ -338,21 +244,21 @@ export default function MemberManagement(props) {
                           <div className="mb-3 pt-0">
                             <DateInput
                               className="w-full"
-                              label="Start Date:"
-                              name="start_date"
-                              selected={values.start_date}
-                              errors={errors.start_date}
-                              onChange={(date) => handleDateChange("start_date", date)}
+                              label="Original Hire:"
+                              name="original_hire"
+                              selected={values.original_hire}
+                              errors={errors.original_hire}
+                              onChange={(date) => handleDateChange("original_hire", date)}
                             />
                           </div>
                           <div className="mb-3 pt-0">
-                            <DateInput
+                            <TextInput
                               className="w-full"
-                              label="End Date:"
-                              name="end_date"
-                              selected={values.end_date}
-                              errors={errors.end_date}
-                              onChange={(date) => handleDateChange("end_date", date)}
+                              label="Badge:"
+                              name="badge"
+                              value={values.address_2}
+                              errors={errors.badge}
+                              onChange={handleChange}
                             />
                           </div>
                         </div>
@@ -380,27 +286,21 @@ export default function MemberManagement(props) {
                             />
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="mb-3 pt-0">
-                            <TextInput
-                              className="w-full"
-                              label="Social Security:"
-                              name="social_security"
-                              errors={errors.social_security}
-                              value={values.social_security}
-                              onChange={handleChange}
-                            />
-                          </div>
-                          <div className="mb-3 pt-0">
-                            <TextInput
-                              className="w-full"
-                              label="Employee Number:"
-                              name="employee_number"
-                              errors={errors.employee_number}
-                              value={values.employee_number}
-                              onChange={handleChange}
-                            />
-                          </div>
+                        <div className="grid grid-cols-1 gap-4">
+                            <div className="mb-3 pt-0">
+                                <SelectInput
+                                    className="w-full"
+                                    label="Position:"
+                                    name="position"
+                                    errors={errors.position}
+                                    value={values.position}
+                                    onChange={handleChange}
+                                >
+                                    <option value=""></option>
+                                    <option value="CA">Canada</option>
+                                    <option value="US">United States</option>
+                                </SelectInput>
+                            </div>
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-8">
@@ -416,17 +316,106 @@ export default function MemberManagement(props) {
                             />
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4">
                           <div className="mb-3 pt-0">
-                            <TextInput
-                              className="w-full"
-                              label="IAFF Member:"
-                              name="iaff_member"
-                              errors={errors.iaff_member}
-                              value={values.iaff_member}
-                              onChange={handleChange}
-                            />
+                            <SelectInput
+                                className="w-full"
+                                label="Sick Plan:"
+                                name="sick_plan"
+                                errors={errors.sick_plan}
+                                value={values.sick_plan}
+                                onChange={handleChange}
+                            >
+                                <option value=""></option>
+                                <option value="CA">Canada</option>
+                                <option value="US">United States</option>
+                            </SelectInput>
                           </div>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="mb-3 pt-0">
+                                <TextInput
+                                className="w-full"
+                                label="Social Security:"
+                                name="social_security"
+                                errors={errors.social_security}
+                                value={values.social_security}
+                                onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-3 pt-0">
+                                <TextInput
+                                className="w-full"
+                                label="Employee Number:"
+                                name="employee_number"
+                                errors={errors.employee_number}
+                                value={values.employee_number}
+                                onChange={handleChange}
+                                />
+                            </div>
+                            </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <label>Contact Details</label>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="mb-3 pt-0">
+                                <TextInput
+                                className="w-full"
+                                label="IAFF Member:"
+                                name="iaff_member"
+                                errors={errors.iaff_member}
+                                value={values.iaff_member}
+                                onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="mb-3 pt-0">
+                                <TextInput
+                                className="w-full"
+                                label="Home Phone:"
+                                name="home_phone"
+                                errors={errors.home_phone}
+                                value={values.home_phone}
+                                onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-3 pt-0">
+                                <TextInput
+                                className="w-full"
+                                label="Cell Phone:"
+                                name="cell_phone"
+                                errors={errors.cell_phone}
+                                value={values.cell_phone}
+                                onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="mb-3 pt-0">
+                               
+                            </div>
+                            <div className="mb-3 pt-0">
+                               
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 gap-4">
+                            <div className="mb-3 pt-0">
+                                <TextInput
+                                className="w-full"
+                                label="Email Address:"
+                                name="email"
+                                errors={errors.email}
+                                value={values.email}
+                                onChange={handleChange}
+                                />
+                            </div>
                         </div>
                       </div>
                       
@@ -437,21 +426,7 @@ export default function MemberManagement(props) {
                       </button>
                     </form>
                   </div>
-                  <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                    <p>
-                      
-                    </p>
-                  </div>
-                  <div className={openTab === 3 ? "block" : "hidden"} id="link3">
-                    <p>
-                     
-                    </p>
-                  </div>
-                  <div className={openTab === 4 ? "block" : "hidden"} id="link4">
-                    <p>
-                     
-                    </p>
-                  </div>
+                  
                 </div>
               </div>
             </div>
